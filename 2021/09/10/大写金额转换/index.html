@@ -47,7 +47,7 @@
 <meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827064703%E5%B0%8F%E6%95%B0%E8%BD%AC%E5%8C%96.png">
 <meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827064858%E5%90%88%E5%B9%B6.png">
 <meta property="article:published_time" content="2021-09-10T08:33:10.000Z">
-<meta property="article:modified_time" content="2021-09-10T08:39:52.241Z">
+<meta property="article:modified_time" content="2021-09-10T08:56:27.984Z">
 <meta property="article:author" content="An1ess">
 <meta property="article:tag" content="C#">
 <meta property="article:tag" content="Code">
@@ -213,7 +213,7 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54012475/article/details/113321839">–&gt;string类的Trim相关函数&lt;–</a></p>
 <h2 id="2-解决思路"><a href="#2-解决思路" class="headerlink" title="2.解决思路"></a>2.解决思路</h2><ul>
 <li><strong>映射</strong><br> 1.先将0-9对应的大写中文进行映射，方便后续的转化，这里考虑用枚举或者字典进行记录，为了方便遍历，我用了字典类型进行记录。</li>
-<li><strong>标记</strong><br> <img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827072238%E6%A0%87%E8%AE%B02.png"><br> 1.将要处理的字符串处理为四个一组，第一组没单位，后面单位亿和万交替标记。同事增加一个flag，范围0到-3，分别代表个拾佰仟<br> 2.后续只需要根据每组当前的flag以及当前对应数字进行文字输出<br> <img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827072540%E6%A0%87%E8%AE%B03.png"><br> 3.输出完成文字后，标准答案被包含在了中文字符串中还得去除多余的零以及亿单位后面的万单位（因为亿就已经包含了万了）<h2 id="3-成品展示"><a href="#3-成品展示" class="headerlink" title="3.成品展示"></a>3.成品展示</h2><span id="more"></span></li>
+<li><strong>标记</strong><br> <img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827072238%E6%A0%87%E8%AE%B02.png"><br> 1.将要处理的字符串处理为四个一组，第一组没单位，后面单位亿和万交替标记。同事增加一个flag，范围0到-3，分别代表个拾佰仟<br> 2.后续只需要根据每组当前的flag以及当前对应数字进行文字输出<br> <img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827072540%E6%A0%87%E8%AE%B03.png"><br> 3.输出完成文字后，标准答案被包含在了中文字符串中还得去除多余的零以及亿单位后面的万单位（因为亿就已经包含了万了）<h2 id="3-成品展示"><a href="#3-成品展示" class="headerlink" title="3.成品展示"></a>3.成品展示</h2></li>
 <li><strong>不输入数据判空</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055034%E8%BE%93%E5%85%A5%E4%B8%BA%E7%A9%BA.gif"></li>
 <li><strong>输入数据带符号判错（除了负号）</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055028%E8%BE%93%E5%85%A5%E7%AC%A6%E5%8F%B7.gif"></li>
 <li><strong>输入数据带英文判错</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055041%E8%BE%93%E5%85%A5%E8%8B%B1%E6%96%87.gif"></li>

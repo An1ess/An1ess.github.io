@@ -177,10 +177,76 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54012475/article/details/113321839">–&gt;string类的Trim相关函数&lt;–</a></p>
 <h2 id="2-解决思路"><a href="#2-解决思路" class="headerlink" title="2.解决思路"></a>2.解决思路</h2><ul>
 <li><strong>映射</strong><br> 1.先将0-9对应的大写中文进行映射，方便后续的转化，这里考虑用枚举或者字典进行记录，为了方便遍历，我用了字典类型进行记录。</li>
-<li><strong>标记</strong><br> <img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827072238%E6%A0%87%E8%AE%B02.png"><br> 1.将要处理的字符串处理为四个一组，第一组没单位，后面单位亿和万交替标记。同事增加一个flag，范围0到-3，分别代表个拾佰仟<br> 2.后续只需要根据每组当前的flag以及当前对应数字进行文字输出<br> <img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827072540%E6%A0%87%E8%AE%B03.png"><br> 3.输出完成文字后，标准答案被包含在了中文字符串中还得去除多余的零以及亿单位后面的万单位（因为亿就已经包含了万了）<h2 id="3-成品展示"><a href="#3-成品展示" class="headerlink" title="3.成品展示"></a>3.成品展示</h2>
-        
-          <a class="article-more-a" href="/2021/09/10/%E5%A4%A7%E5%86%99%E9%87%91%E9%A2%9D%E8%BD%AC%E6%8D%A2/#more">more >></a>
-        
+<li><strong>标记</strong><br> <img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827072238%E6%A0%87%E8%AE%B02.png"><br> 1.将要处理的字符串处理为四个一组，第一组没单位，后面单位亿和万交替标记。同事增加一个flag，范围0到-3，分别代表个拾佰仟<br> 2.后续只需要根据每组当前的flag以及当前对应数字进行文字输出<br> <img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827072540%E6%A0%87%E8%AE%B03.png"><br> 3.输出完成文字后，标准答案被包含在了中文字符串中还得去除多余的零以及亿单位后面的万单位（因为亿就已经包含了万了）<h2 id="3-成品展示"><a href="#3-成品展示" class="headerlink" title="3.成品展示"></a>3.成品展示</h2></li>
+<li><strong>不输入数据判空</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055034%E8%BE%93%E5%85%A5%E4%B8%BA%E7%A9%BA.gif"></li>
+<li><strong>输入数据带符号判错（除了负号）</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055028%E8%BE%93%E5%85%A5%E7%AC%A6%E5%8F%B7.gif"></li>
+<li><strong>输入数据带英文判错</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055041%E8%BE%93%E5%85%A5%E8%8B%B1%E6%96%87.gif"></li>
+<li><strong>负整数的转换</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055022%E8%B4%9F%E6%95%B4%E6%95%B0.gif"></li>
+<li><strong>负数带小数的转换</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055010%E8%B4%9F%E5%B0%8F%E6%95%B0.gif"></li>
+<li><strong>正整数的转换</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055047%E6%95%B4%E6%95%B0.gif"></li>
+<li><strong>正数带小数的转换</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055055%E6%AD%A3%E5%B0%8F%E6%95%B0.gif"></li>
+</ul>
+<h2 id="4-需求分析"><a href="#4-需求分析" class="headerlink" title="4.需求分析"></a>4.需求分析</h2><ul>
+<li><p><strong>初审题目与计划</strong></p>
+<p>首先对题目进行通读，分析题目需求：</p>
+<p>1.该输入字符串只能是能正确表示的数字，不能带有其余标点符号以及字母</p>
+<p>2.大写金额单位上到亿，下到分</p>
+<p>​3.输入的数字不限大小，不一定是long long以内的数字，考虑用字符串进行处理</p>
+<p>4.要提供一个按钮用于转换，以及一个输入框进行输入，还有一个显示框进行显示</p>
+<p>5.语言选定C#</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>项目搭建</strong></p>
+<p>创建基于C#的winform桌面应用<br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055559winform%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA.png"></p>
+</li>
+<li><p><strong>界面大体模型</strong><br>运行初始化<br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055904%E5%88%9D%E5%A7%8B%E5%8C%96.png"><br>执行转换按钮。<br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827055944%E8%BF%90%E8%A1%8C%E8%BD%AC%E6%8D%A2.png"><br>执行出错<br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827060055%E6%89%A7%E8%A1%8C%E5%87%BA%E9%94%99.png"></p>
+</li>
+</ul>
+<h2 id="5-设计实现过程"><a href="#5-设计实现过程" class="headerlink" title="5.设计实现过程"></a>5.设计实现过程</h2><ul>
+<li><p><strong>对输入的数字串进行判断</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827061030%E5%88%A4%E6%96%AD.png"></p>
+</li>
+<li><p><strong>格式化输入的字符串</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827061122%E6%A0%BC%E5%BC%8F%E5%8C%96.png"></p>
+</li>
+<li><p><strong>对数字串（如果有小数位）进行四舍五入，保留两位</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827061142%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5.png"></p>
+</li>
+<li><p><strong>转换整数部分</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827061205%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%E9%83%A8%E5%88%86.png"></p>
+</li>
+<li><p><strong>转换小数部分</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827061228%E8%BD%AC%E6%8D%A2%E5%B0%8F%E6%95%B0.png"></p>
+</li>
+<li><p><strong>合并字符串</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827061246%E5%90%88%E5%B9%B6.png"></p>
+</li>
+</ul>
+<h2 id="6-代码说明"><a href="#6-代码说明" class="headerlink" title="6.代码说明"></a>6.代码说明</h2><ul>
+<li><p><strong>字典初始化</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827063214%E5%AD%97%E5%85%B8%E5%88%9D%E5%A7%8B%E5%8C%96.png"><br>先将之后用于数字-&gt;中文的映射记录在一个字典中，winform界面初始化的时候同时进行字典的初始化，以免每次按钮都要初始化一次增加开销</p>
+</li>
+<li><p><strong>字符串判断</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827061939%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%A4%E6%96%AD.png"><br>count变量用于记录小数点的个数，如果有1个或者0个都是合法的，如果大于1个则return -1，表示输入的数据违规<br>通过for循环遍历字符串的每一个字符，如果出现不是数字以外的符号则直接返回违规数据<br>返回值-1代表错误，0和1代表小数点个数</p>
+</li>
+<li><p><strong>格式化字符串</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827062258%E6%A0%BC%E5%BC%8F%E5%8C%96.png"><br>该函数用于处理合理输入，但是逻辑不合理的数字串<br>调用trimstart函数将类似000000123这种前缀很多0的字符串进行格式化，把无效0全部过滤</p>
+</li>
+<li><p><strong>对字符串进行四舍五入</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827062634%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A51.png"><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827062640%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A52.png"><br>该函数首先判断格式化后的字符串有没有小数点，若没有则直接返回，不需要四舍五入，如果有小数点则根据位数进行判断<br>若小数位数小于3，则无需四舍五入<br>若小数位数大于等于3，先保留前三位，之后根据第三位进行字符串的进位<br>由于string是final修饰符限定的<br>所以用一个char数组存储字符串进行进位操作</p>
+</li>
+<li><p><strong>将整数部分转换为大写金额</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827063739%E8%A1%A50.png"><br>补0操作用于将字符串变为4的倍数，方便用于亿和万的标记<br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827063919%E6%A0%87%E8%AE%B0.png"><br>创建一个堆栈，用于存放亿和万的单位，一旦flag循环过一次，就从栈中弹出一个单位加入到输出字符串<br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827064331%E8%BD%AC%E6%8D%A21.png"><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827064337%E8%BD%AC%E6%8D%A22.png"><br>做好标记，设置好栈之后就可以进行循环遍历输入字符串，然后判断后加入输出字符串<br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827064525%E5%A4%A7%E5%86%99%E9%87%91%E9%A2%9D%E4%BC%98%E5%8C%96.png"><br>该函数用于对输出字符串进行优化，将多余的零以及亿之后跟着的万去除，从而得到标准答案</p>
+</li>
+<li><p><strong>将小数部分转换为小写金额</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827064703%E5%B0%8F%E6%95%B0%E8%BD%AC%E5%8C%96.png"><br>该函数进行分类讨论，0位，1位，2位的情况（因为已经四舍五入过了，不需要考虑后面的位数）</p>
+</li>
+<li><p><strong>合并整数部分和小数部分</strong><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/2021146/o_210827064858%E5%90%88%E5%B9%B6.png"><br>将上述两个函数得到的整数部分以及小数部分进行合并</p>
+</li>
+</ul>
+<h2 id="7-编码过程遇到的困难"><a href="#7-编码过程遇到的困难" class="headerlink" title="7.编码过程遇到的困难"></a>7.编码过程遇到的困难</h2><ul>
+<li><p><strong>(char)int类型的使用</strong><br>在判断进位的时候，我用了一个int型变量记录是否为10，如果为10则将当前字符变为0，并且进位标志置为1，不为10，则将该int型赋给当前字符，由于一开始以为可以直接转<br>，导致输出的字符串中带了奇怪的标点符号，后来经过一番思索才知道应该要(char)(int+’0’)这样，才能转换为对应的字符数字。</p>
+</li>
+<li><p><strong>处理超长数字</strong><br>一开始我想的是用数字除法进行一位一位的转换成大写金额，但后来才发现如果一旦输入的数字串超出long long的范围就会导致答案有问题，所以开始改成使用字符串进行操作。</p>
+</li>
+<li><p><strong>超长数字读法分歧</strong><br>写完程序之后，我通过网上的转换器测试我自己写的程序的准确性，发现亿亿级别内的数字读法能够和网上一模一样，但是到了亿亿亿级别之后，读法开始出现了分歧，但是我自己写在草稿纸上的读法跟我程序写出来的读法一样，所以到现在我还没有解决三个亿级别的数据读法分歧的问题。</p>
+</li>
+</ul>
+<h2 id="8-程序性能分析"><a href="#8-程序性能分析" class="headerlink" title="8.程序性能分析"></a>8.程序性能分析</h2><ul>
+<li><strong>时间复杂度</strong><br>点击按钮后，不论是判断，还是转换的函数都是需要遍历字符串的，因此该程序的时间复杂度为O(n)级别，后续可以继续优化，看能否将时间复杂度进行进一步的优化。</li>
+<li><strong>空间复杂度</strong><br>由于string类是由final修饰符修饰，一旦定义了就能不修改，因此需要一些辅助字符数组来进行字符串的修改操作，该程序还需要一个栈来存放标志位，因此空间开销略大，空间复杂度略高，后续可以继续进行优化。</li>
+</ul>
+<h2 id="9-心路历程"><a href="#9-心路历程" class="headerlink" title="9.心路历程"></a>9.心路历程</h2><p><strong>心路历程：</strong><br>  本次开发是基于C#以及winform进行开发，由于刚入手没多久，学习兴趣还是挺高的，winform的可拉动控件也让我觉得非常的适合新手，字符串转化为大写金额的处理看似简单，但是处理过程总会遇到一些磕磕碰碰，能够自己亲自模拟，以及找出解决办法都对自我编码能力的提高有着大大的帮助，通过这一次的编码，我也是提高了不仅是对语言的使用，更是对于逻辑处理的能力。<br><strong>技术收获：</strong><br>  关于button_click和button.performclick:由于performclick是模拟用户点击，因此CPU要进行调度，若button1调用button2的performclick，则CPU会从button1的事件跳转到button2进行执行，之后再调度回来，稍微影响性能。</p>
+
       
 
       
