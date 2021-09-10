@@ -320,6 +320,101 @@
 
 
   
+    <article id="post-技术分享" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/27/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/27/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="archive-article-date">
+  	<time datetime="2020-01-27T03:17:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <meta name="referrer" content="no-referrer"/> 
+## Postman简介
+用户在开发或者调试网络程序或者是网页B/S模式的程序的时候是需要一些方法来跟踪网页请求的，用户可以使用一些网络的监视工具比如著名的Firebug等网页调试工具。今天给大家介绍的这款网页调试工具不仅可以调试简单的css、html、脚本等简单的网页基本信息，它还可以发送几乎所有类型的HTTP请求！Postman在发送网络HTTP请求方面可以说是Chrome插件类产品中的代表产品之一。
+
+<h2 id="Postman技术详述"><a href="#Postman技术详述" class="headerlink" title="Postman技术详述"></a>Postman技术详述</h2><h3 id="1-Postman下载安装"><a href="#1-Postman下载安装" class="headerlink" title="1.Postman下载安装"></a>1.Postman下载安装</h3><p>Postman的下载地址：<a target="_blank" rel="noopener" href="https://app.getpostman.com/app/download/win64?_ga=2.201562513.1250696341.1530543681-1582181135.1530543681">Postman for windows x64</a></p>
+<h3 id="2-Postman的使用方法"><a href="#2-Postman的使用方法" class="headerlink" title="2.Postman的使用方法"></a>2.Postman的使用方法</h3><p>在地址栏输入控制器中的地址方法，底下的Key和Value则是你想要传入的该方法的参数，若成功，则会返回数据类型，失败则会显示状态码，还可以选择<br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/1787495/o_200615073310QQ%E6%88%AA%E5%9B%BE20200615152803.jpg"  div align=center /><br>还能够查看网页元素，若调试失败，可以查看失败原因，还有返回格式也能设定<br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/1787495/o_20061507323220180523234247147.png"  div align=center /><br>左侧栏可以看历史调试记录，必要时可以直接点击，改变参数就能接着调试</p>
+<img src="https://images.cnblogs.com/cnblogs_com/An1ess/1787495/o_200615085353QQ%E6%88%AA%E5%9B%BE20200615165338.jpg"  div align=center />
+
+<h2 id="SSM框架简介"><a href="#SSM框架简介" class="headerlink" title="SSM框架简介"></a>SSM框架简介</h2><p>Spring</p>
+<p>Spring就像是整个项目中装配bean的大工厂，在配置文件中可以指定使用特定的参数去调用实体类的构造方法来实例化对象。也可以称之为项目中的粘合剂。Spring的核心思想是IoC（控制反转），即不再需要程序员去显式地<code>new</code>一个对象，而是让Spring框架帮你来完成这一切。</p>
+<p>SpringMVC</p>
+<p>SpringMVC在项目中拦截用户请求，它的核心Servlet即DispatcherServlet承担中介或是前台这样的职责，将用户请求通过HandlerMapping去匹配Controller，Controller就是具体对应请求所执行的操作。SpringMVC相当于SSH框架中struts。</p>
+<p>mybatis</p>
+<p>mybatis是对jdbc的封装，它让数据库底层操作变的透明。mybatis的操作都是围绕一个sqlSessionFactory实例展开的。mybatis通过配置文件关联到各实体类的Mapper文件，Mapper文件中配置了每个类对数据库所需进行的sql语句映射。在每次与数据库交互时，通过sqlSessionFactory拿到一个sqlSession，再执行sql命令。</p>
+<h2 id="SSM框架技术详述"><a href="#SSM框架技术详述" class="headerlink" title="SSM框架技术详述"></a>SSM框架技术详述</h2><p>SpringMVC：它用于web层，相当于controller（等价于传统的servlet和struts的action），用来处理用户请求。举个例子，用户在地址栏输入http://网站域名/login，那么springmvc就会拦截到这个请求，并且调用controller层中相应的方法，（中间可能包含验证用户名和密码的业务逻辑，以及查询数据库操作，但这些都不是springmvc的职责），最终把结果返回给用户，并且返回相应的页面（当然也可以只返回json/xml等格式数据）。springmvc就是做前面和后面过程的活，与用户打交道！！</p>
+<p>Spring：太强大了，以至于我无法用一个词或一句话来概括它。但与我们平时开发接触最多的估计就是IOC容器，它可以装载bean（也就是我们java中的类，当然也包括service dao里面的），有了这个机制，我们就不用在每次使用这个类的时候为它初始化，很少看到关键字new。另外spring的aop，事务管理等等都是我们经常用到的。</p>
+<p>MyBatis：如果你问我它跟鼎鼎大名的Hibernate有什么区别？我只想说，他更符合我的需求。第一，它能自由控制sql，这会让有数据库经验的人编写的代码能搞提升数据库访问的效率。第二，它可以使用xml的方式来组织管理我们的sql，因为一般程序出错很多情况下是sql出错，别人接手代码后能快速找到出错地方，甚至可以优化原来写的sql。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-51627acbaa7afb702765f42fea88f7b4_720w.jpg"><br><img src="https://images.cnblogs.com/cnblogs_com/An1ess/1787495/o_200615093728QQ%E6%88%AA%E5%9B%BE20200615173705.jpg"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Code</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/27/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
 
 
